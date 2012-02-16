@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Canvas Basic Example</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script type="text/javascript">
+		function drawRectangle(){
+			var cvs = document.querySelector("#theCanvas");
+			var context = cvs.getContext('2d');
+			
+			context.fillRect(0,0,150,100)	;
+
+		}
+
+		function drawRedRectangle(){
+			var cvs = document.querySelector("#theCanvas");
+			var context = cvs.getContext('2d');
+			context.fillStyle   = '#f00'; // blue
+			context.strokeStyle = '#00f'; // red
+			context.lineWidth   = 4;
+			context.fillRect(10,175,150,100);
+			context.strokeRect(10,175,150,100);
+
+		}
+
+	</script>
+	
+
+</head> 
+<body> 
+
+	<canvas id="theCanvas" width="600" height="300">
+	Fallback content, in case the browser does not support Canvas.
+	</canvas>
+	<br />
+	<button onclick="drawRectangle()">Draw Rectangle</button>
+	<button onclick="drawRedRectangle()">Draw Red Rectangle</button>
+
+</body>
+</html>
