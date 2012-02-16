@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Banner Example</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style type="text/css">
+		#list{
+			background-color: #CCCCCC;
+			border-radius: 95px;
+			position: relative;
+			margin: 100px;
+			border: 1px solid red;
+			width: 150px;
+			height: 150px;
+			padding: 40px 0 0 40px ;
+
+			-webkit-transition-property: -webkit-transform, left, background-color;  
+			 -webkit-transition-duration: 2s, 2s, 2s;  
+			 -webkit-transition-timing-function: ease-in, ease-in, ease-in;  
+
+		}
+
+	</style>
+	
+	<script type="text/javascript">
+
+		function allAnimations(){
+			spin();
+			move();
+			color();
+		}	
+
+		function spin(){
+			var list = document.querySelector('#list');
+			
+			if (list.style.webkitTransform != "rotate(720deg)"){
+				list.style.webkitTransform = "rotate(720deg)";
+			}
+			else{
+				list.style.webkitTransform = "rotate(0deg)";
+			}
+		}
+
+		function move(){
+			var list = document.querySelector('#list');
+			
+			if (list.style.left != "500px"){
+				list.style.left = "500px";
+			}
+			else{
+				list.style.left = "0px";
+			}
+		}
+
+		function color(){
+			var list = document.querySelector('#list');
+			
+
+
+			if (list.style.backgroundColor != "rgb(255, 0, 0)"){
+				list.style.backgroundColor = "rgb(255, 0, 0)";
+			}
+			else{
+				list.style.backgroundColor = "rgb(204,204,204)";
+			}
+		}
+	</script>
+	
+
+</head> 
+<body> 
+
+	<ul id="list">
+		<li>A simple list</li>
+		<li>A simple list</li>
+		<li>A simple list</li>
+		<li>A simple list</li>
+		<li>A simple list</li>
+		<li>A simple list</li>
+	</ul>
+	
+
+	<button onclick="spin()">Spin</button>
+	<button onclick="move()">Move</button>
+	<button onclick="color()">Color</button>
+	<button onclick="allAnimations()">All</button>
+
+</body>
+</html>
