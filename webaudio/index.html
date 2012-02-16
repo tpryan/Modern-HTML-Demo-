@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Web Audio API</title>
+
+	<style type="text/css">
+
+		body{
+			background-color: #000;
+			color: #FFF;
+			font-family: "kepler-std", Georgia, serif;
+			font-size: 24px;
+
+		}
+
+		h1{
+			color: #f00	;
+			font-family: "league-gothic", "Arial Black", sans-serif;
+			font-weight: normal;
+		}
+
+		.closed{
+			opacity: 0.0;
+			-webkit-transition: opacity 2s;	
+		}
+
+		.inception{
+			font-family: "league-gothic", "Arial Black", sans-serif;
+			text-transform: uppercase;
+			color: #f00;
+			font-style: normal;
+			letter-spacing: 2px;
+		}
+
+
+	</style>
+	<script type="text/javascript" src="http://use.typekit.com/maa7smz.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>   
+    
+<body> 
+
+<h1>Web Audio API Demo</h1>
+
+<div id="first">
+	<p>Play this clip (20 seconds) from the score of the movie <cite class="inception">Inception</cite>:</p>
+	<button id="zimmer" onclick="playZimmer()">Play Inception</button><br />
+</div>
+
+<div id="second" class="closed">
+	<p>Now, play this opening (10 seconds) from Edith Piaf's <cite>Non, je ne regrette rien</cite> &#8213; the 
+	song they use in the movie <cite class="inception">Inception</cite> to signal people to exit dreams.</p>
+	<button id="edith"  onclick="playEdith()">Play Edith</button><br />
+</div>
+
+<div id="third" class="closed">
+	<p>Now listen to what happens when you slow down that opening:</p>
+	<button id="slowEdith"  onclick="playEdithSlow()">Slow Edith</button><br />
+</div>
+
+<div id="fourth" class="closed">
+	<p>It should sound familiar. In the dreams in <cite class="inception">Inception</cite> time gets slowed down.  </p>
+	
+</div>
+
+<div id="last" class="closed">
+	
+	<p>I should note that this is not my original work here.  The writers at <a href="http://www.cracked.com/article_19210_7-insane-easter-eggs-hidden-in-movies-tv-shows_p2.html"><cite>Cracked</cite></a> wrote up analysis of 
+	this based on a <a href="http://www.youtube.com/watch?v=UVkQ0C4qDvM">YouTube video uploaded by user:camiam321</a>.</p>
+	<p>The only thing I brought to the table was use JavaScript and the <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio API</a> to do all of the slowing down and playing the clips over each other.</p> 
+
+
+
+</div>
+
+<script type="text/javascript">
+
+	function playZimmer(){
+		document.querySelector("#zimmer").disabled = true;
+		playAudio('zimmer2.mp3', 1.0);
+		setTimeout('document.querySelector("#second").style.opacity = 1',17000);
+	}
+
+	function playEdith(){
+		document.querySelector("#edith").disabled = true;
+		playAudio('edith.mp3', 1.0);
+		setTimeout('document.querySelector("#third").style.opacity = 1',10000);
+	}
+
+	function playEdithSlow(){
+		document.querySelector("#slowEdith").disabled = true;
+		playAudio('edith.mp3', 0.3);
+		setTimeout("playAudio('zimmer2.mp3', 1.0)", 23060);
+		setTimeout('document.querySelector("#fourth").style.opacity = 1',23060);
+		setTimeout('document.querySelector("#last").style.opacity = 1',30000);
+
+	}
+	
+	function playAudio(file, speed){	
+		if (typeof AudioContext == "function") {
+			var audioContext = new AudioContext();
+		} else if (typeof webkitAudioContext == "function") {
+			var audioContext = new webkitAudioContext();
+		}
+
+		var source = audioContext.createBufferSource();
+		source.connect(audioContext.destination);
+
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", file, true);
+		xhr.responseType = "arraybuffer";
+		xhr.onload = function() {
+			var buffer = audioContext.createBuffer(xhr.response, false);
+			source.buffer = buffer;
+			source.playbackRate.value = speed;
+			source.noteOn(0);
+		};
+		xhr.send();
+	}
+</script>
+
+<script type="text/javascript"> 
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+	var pageTracker = _gat._getTracker("UA-620739-3");
+	pageTracker._trackPageview();
+</script> 
+</body>
+</html>

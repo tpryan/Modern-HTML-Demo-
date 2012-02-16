@@ -1,0 +1,223 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Banner Example</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link href="prettify.css" type="text/css" rel="stylesheet" />
+	
+
+	<style>
+		body{ 
+			padding: 0;
+			margin: 0 0 0 10px;
+
+		}
+
+		pre{
+			width: 1100px;
+
+		}
+
+		pre.prettyprint{
+			border: none;
+		}
+
+		.closed{
+			height: -0;
+			border: none;
+			overflow: hidden;
+			-webkit-transition: height 1s linear;
+		}
+
+	
+		#banner{
+			height: 149px;
+			width: 149px;
+			overflow:hidden;
+			padding: 0;
+			margin: 0;
+		}
+		
+
+		.layout{
+			display: block;
+			width: 190px;
+			padding: 5px 15px 5px 25px;
+		}
+
+
+		.color{
+			background-color: #333;
+			color: #E89343;
+		}
+
+		.font{
+			font-size: 14px;
+			font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", 
+				"Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, 
+				Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+			word-spacing: 2px;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		.shadow{
+			-moz-box-shadow:    1px 1px 5px 1px #666;
+			-webkit-box-shadow: 1px 1px 5px 1px #666;
+			-ms-box-shadow: 1px 1px 5px 1px #666;
+			box-shadow: 1px 1px 5px 1px #666;
+		}
+
+		.origin{
+			-moz-transform-origin: 0 0 ;
+			-webkit-transform-origin: 0 0 ;
+			-ms-transform-origin: 0 0 ;	
+			transform-origin: 0 0 ;
+			position:relative;
+			left: 20px;
+			top: -37px;		
+		}
+
+		.rotate{
+			-moz-transform:rotate(45deg);
+			-webkit-transform:rotate(45deg);
+			-ms-transform:rotate(45deg);
+			transform:rotate(45deg);
+			
+		}
+
+		.background{
+			background-image: linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+			background-image: -o-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+			background-image: -moz-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+			background-image: -webkit-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+			background-image: -ms-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #000382C2C000 97%);
+			
+			background-image: -webkit-gradient(
+				linear,
+				left bottom,
+				left top,
+				color-stop(0.03, #382C2C),
+				color-stop(0.05, #E89343),
+				color-stop(0.07, #382C2C),
+				color-stop(0.93, #382C2C),
+				color-stop(0.95, #E89343),
+				color-stop(0.97, #382C2C)
+			);	
+
+		}
+	
+	</style>
+
+	<script type="text/javascript" src="prettify.js"></script>
+	<script type="text/javascript">
+		function toggleBannerClass(classToSet){
+			document.querySelector('#banner a').classList.toggle(classToSet);
+		}
+
+		function toggleCode(idToTarget, button){
+			var id = document.querySelector('#' + idToTarget);
+
+			if (id.style.height == 0 || id.style.height == "0px"){ 
+				id.style.height = "auto";
+				id.style.border = "1px solid #888";
+				button.textContent = "-";
+			}
+			else{
+				id.style.height = 0;
+				id.style.border = "none";
+				button.textContent = "+";
+			}	
+				
+
+			return false;
+		}
+	</script>
+
+	
+
+</head> 
+<body onload="prettyPrint()"> 
+	<div id="banner"><a href="" >Fork me on GitHub</a></div>
+
+		<label><input id="layout" type="checkbox" onclick="toggleBannerClass('layout')"> Add Layout</label><br />
+		<button onclick="toggleCode('codelayout', this);return false;">+</button>
+		<pre id="codelayout" class="prettyprint linenums  closed">
+<code class="lang-css">display: block;
+width: 190px;
+padding: 5px 15px 5px 25px;
+</code></pre>
+		
+
+		<label><input id="color" type="checkbox" onclick="toggleBannerClass('color')"> Add Color</label><br />
+		<button onclick="toggleCode('codecolor', this);return false;">+</button>
+		<pre id="codecolor"  class="prettyprint linenums closed">
+<code class="lang-css">background-color: #333;
+color: #E89343;
+</code></pre>
+		
+		<label><input id="font" type="checkbox" onclick="toggleBannerClass('font')"> Add Font</label><br />
+		<button onclick="toggleCode('codefont', this);return false;">+</button>
+		<pre id="codefont" class="prettyprint linenums closed">
+<code class="lang-css">font-size: 14px;
+font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", 
+	"Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, 
+	Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+word-spacing: 2px;
+text-decoration: none;
+text-align: center;
+</code></pre>
+		<label><input id="rotate" type="checkbox" onclick="toggleBannerClass('rotate')"> Add Rotate</label><br />
+		<button onclick="toggleCode('coderotate', this);return false;">+</button>
+		<pre id="coderotate" class="prettyprint linenums closed">
+<code class="lang-css">-moz-transform:rotate(45deg);
+-webkit-transform:rotate(45deg);
+-ms-transform:rotate(45deg);
+transform:rotate(45deg);
+</code></pre>
+		<label><input id="origin" type="checkbox" onclick="toggleBannerClass('origin')"> Add Origin</label><br />
+		<button onclick="toggleCode('codeorigin', this);return false;">+</button>
+		<pre id="codeorigin" class="prettyprint linenums closed">
+<code class="lang-css">-moz-transform-origin: 0 0 ;
+-webkit-transform-origin: 0 0 ;
+-ms-transform-origin: 0 0 ;	
+transform-origin: 0 0 ;
+position:relative;
+left: 20px;
+top: -37px;		
+</code></pre>
+		<label><input id="background" type="checkbox" onclick="toggleBannerClass('background')"> Add Background</label><br />
+		<button onclick="toggleCode('codebackground', this);return false;">+</button>
+		<pre id="codebackground" class="prettyprint linenums closed">
+<code class="lang-css">background-image: linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+background-image: -o-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+background-image: -moz-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+background-image: -webkit-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #382C2C 97%);
+background-image: -ms-linear-gradient(bottom, #382C2C 3%, #E89343 5%, #382C2C 7%, #382C2C 93%, #E89343 95%, #000382C2C000 97%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.03, #382C2C),
+	color-stop(0.05, #E89343),
+	color-stop(0.07, #382C2C),
+	color-stop(0.93, #382C2C),
+	color-stop(0.95, #E89343),
+	color-stop(0.97, #382C2C)
+);	
+</code></pre>
+		<label><input id="shadow" type="checkbox" onclick="toggleBannerClass('shadow')"> Add Shadow</label><br />
+		<button onclick="toggleCode('codeshadow', this);return false;">+</button>
+		<pre id="codeshadow" class="prettyprint linenums closed">
+<code class="lang-css">-moz-box-shadow:    1px 1px 5px 1px #666;
+-webkit-box-shadow: 1px 1px 5px 1px #666;
+-ms-box-shadow: 1px 1px 5px 1px #666;
+box-shadow: 1px 1px 5px 1px #666;
+</code></pre>
+
+	
+</body>
+</html>

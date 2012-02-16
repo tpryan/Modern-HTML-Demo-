@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Github Ribbons in CSS - TerrenceRyan.com</title>
+</head>   
+    
+<body id="blogpost" class="blog"> 
+<div id="header">
+	<div>
+		<h1><a href="/">TerrenceRyan.com</a></h1>
+		<h2>I'm a 35 year old redhead geek from Philly. <br /> 
+			I'm currently a Developer Evangelist for <a href="/job">Adobe</a>.</br>
+			Also the author of <a href="/book">Driving Technical Change</a>
+		</h2>
+		
+		<div id="nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/blog">Blog</a></li>
+				<li><a href="/about">About</a></li>	
+			</ul>
+		</nav>
+	</div>
+</div>   
+	
+
+<div id="content">	
+		<div id="post">
+			<div id="postheader">
+				<h1>Github Ribbons in CSS</h1>
+				<time datetime="2012-01-25" pubdate>January 25, 2012</time>
+				<p><a href="/blog/post.cfm/github-ribbons-in-css#respond" title="Comment on Github Ribbons in CSS">5 Comments</a></p>
+			</header>
+			
+			<p><img style="float: right;" src="ribbon.png" alt="" width="305" height="179" /></p>
+			<p><a href="https://github.com">Github</a> has these <a href="https://github.com/blog/273-github-ribbons">cool ribbon images</a> that you can use if you want to encourage forking your project on your site. They're great and I wanted to use them on a little project I am working on. However, one of my goals was not to use any images, but rather produce all display elements with CSS. </p>
+			<p>It was a little bit of trial and error but I got it working. Basically you do the following:</p>
+			<ul>
+			<li>Create a link in a div with an id of "banner"</li>
+			<li>Force div#banner to be 149px x 149px.</li>
+			<li>Set overflow to "hidden"</li>
+			</ul>
+			<p style="clear: both">This creates a square display area that won't show things that stretch out past the bounds of the box.</p>
+			<ul>
+			<li>Create an A link</li>
+			<li>Tilt it using a CSS transform</li>
+			<li>Use relative positioning to pull the ribbon into place</li>
+			<li>Use CSS shadows to tweak the text and ribbon shadows</li>
+			<li>Finally I use a CSS gradient in the background of the ribbon to give it the bands that run along the edge.</li>
+			</ul>
+
+			<p style="clear: both"><strong>Issues</strong>:</p>
+			<ul style="clear: both">
+			<li>It's not a pixel perfect representation. </li>
+			<li>It doesn' work on IE before 9. It doesn't appear at all. </li>
+			</ul>
+			<p style="clear: both">I'm not sure if I'm going to use this. I'll sound judgmental here, but the fact that it doesn't show up on IE less than 9 seems like a good thing. Do I want a developer on my project that isn't using the latest browser? Probably not. </p>
+			<p style="clear: both"><strong>Demo</strong><br /><a href="/examples/ribbon/">See the live demo here.</a></p>
+			<p style="clear: both"><strong>Update</strong></p>
+			<p style="clear: both">A couple people pointed out that there was a weird doubling of the letters on their browser (Chrome on Windows, and Safari on iPad.) Looks like it was caused by a slight text-shadow I had on the text. The text on the original banner has some anti-aliasing going on, and on some browsers, the text shadow helps it look a little smoother, but on others you get that doubling. So I've removed the text shadow.  Display should be a little more consistent. </p>
+			
+			<div id="postfooter">
+				<div class="tagged">	
+					<h3>Tags:</h3> 
+					<p>
+					<a href="/blog/archives.cfm/category/css" title="View all posts in  CSS" rel="category tag">
+							CSS
+						</a> &middot; 
+						<a href="/blog/archives.cfm/category/github" title="View all posts in  github" rel="category tag">
+							github
+						</a> &middot; 
+						<a href="/blog/archives.cfm/category/html5" title="View all posts in  HTML5" rel="category tag">
+							HTML5
+						</a> 
+					</p>
+				</div>
+			</div>
+			
+			
+			<div id="comments">
+				<p class="comments_headers">5 responses so far &darr;</p>
+			
+				<ul id="comment_list">
+					
+					<li class="comment " id="comment-E519D989-A368-6B93-4BA0EB80C33120C6">
+						<div class="comment">
+							<p class="comment_meta">
+								<span class="comment_num"><a href="#comment-E519D989-A368-6B93-4BA0EB80C33120C6" title="Permalink to this comment">1</a></span>
+								<strong><a href='http://www.raymondcamden.com' rel='external nofollow'>Raymond Camden</a></strong>
+								<time datetime="2012-01-25" >Jan 25, 2012 at 5:08 PM</time>
+							</p>
+						
+							The demo version has a 'doubling' effect on the text. I can send a screen shot if you want. It's a small effect, but very obvious.
+						</div>
+					</li>
+					
+					
+				</ul>
+		
+				
+				<!-- Comment Form -->
+				<h3 id="respond" class="comments_headers">Leave a Comment</h3>
+					
+					
+				<form method="post" action="#respond" id="comment_form">
+					<input type="hidden" name="action" value="addComment" />
+					<input type="hidden" name="comment_post_id" value="E4A92B25-B8ED-F235-E35CE68F3E3DD379" />
+					<input type="hidden" name="comment_parent" value="" />
+					
+					<input id="author" class="text_input" type="text" name="comment_name" value="Terrence Ryan" /> <label for="author"><strong>Name</strong></label><br />
+					<input class="text_input" type="text" id="email" name="comment_email" value="terry@terrenceryan.com" /> <label for="email"><strong>Mail</strong> (it will not be displayed)</label><br />
+					<input class="text_input" type="text" id="url" name="comment_website" size="30" value="http://terrenceryan.com"  /> <label for="url"><strong>Website</strong></label><br />
+					
+					
+					<textarea class="text_input text_area" id="comment" name="comment_content" rows="7"></textarea><br />
+					<input type="checkbox" id="subscribe" name="comment_subscribe" value="1" /> <label for="subscribe">Subscribe to this comment thread</label><br />
+					<br /><label><input name="comment_rememberme" type="checkbox" value="1" /> Remember my information</label><br /></p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="/blog/skins/tr2012/assets/images/submit_comment.gif" value="Submit" /><br />
+				</form>
+				</form>
+				
+		
+			</div> <!-- Close #comments container -->
+	
+		</div>			
+			
+		<div id="archives">
+			
+			<div id="categories" class="widget">
+				<h2>Categories</h2>
+				
+					<ul>
+					
+						<li><a href="http://www.terrenceryan.com/blog/feeds/rss.cfm/category/adobe" class="category_rss">
+								<img src="/blog/skins/tr2012/assets/images/icon_rss.gif">
+							</a> 
+							<a href="/blog/archives.cfm/category/adobe" title="Adobe">
+								Adobe
+							</a> 
+						</li>
+						
+						<li><a href="http://www.terrenceryan.com/blog/feeds/rss.cfm/category/adobe-tv" class="category_rss">
+								<img src="/blog/skins/tr2012/assets/images/icon_rss.gif">
+							</a> 
+							<a href="/blog/archives.cfm/category/adobe-tv" title="Adobe TV">
+								Adobe TV
+							</a> 
+						</li>
+						
+						
+						
+					</ul>
+	
+			</div>
+			
+			<div id="monthly-archives" class="widget">
+				<h2>Monthly Archives</h2>
+				
+				<ul>
+					<li><a href="/blog/archives.cfm/date/2012/1">January 2012 (10)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/12">December 2011 (2)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/11">November 2011 (4)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/9">September 2011 (9)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/8">August 2011 (4)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/7">July 2011 (1)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/6">June 2011 (5)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/5">May 2011 (2)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/4">April 2011 (7)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/3">March 2011 (5)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/2">February 2011 (4)</a></li> 
+					<li><a href="/blog/archives.cfm/date/2011/1">January 2011 (3)</a></li> 
+				</ul>
+	
+			</div>
+					
+		</div>
+	
+</div>	
+		
+
+<div id="footer">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/sitemap">Sitemap</a></li>      
+		<li><a href="/search">Search</a></li>
+		<li><a href="/about">Contact</a></li>
+	</ul>
+	<p id="copyright">Copyright 2008 - 2010 Terrence Ryan</p>
+	<p id="disclaimer">This is a personal blog. While Adobe paying my salary might 
+	not make me completely  objective, the opinions expressed here are mine and not their's.</p>
+</div>
+
+
+</body>
+</html>
